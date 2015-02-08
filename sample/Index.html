@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-simpleUploadFile</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+
+<style>
+	.fileUpload {
+		position: relative;
+		overflow: hidden;
+		margin: 10px;
+	}
+	.fileUpload input.upload {
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin: 0;
+		padding: 0;
+		font-size: 20px;
+		cursor: pointer;
+		opacity: 0;
+		filter: alpha(opacity=0);
+	}
+</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+	<script src="ng-simpleUploadFile.js"></script>
+</head>
+<body ng-app="myapp">
+<div ng-controller="test" class="container">
+	<h2>範例-純AngularJS  <small>sample-pure AngularJS</small></h2>
+
+	<h4>HTML&Javascript</h4>
+	<pre>
+		&lt;input-file&gt; recid="2" model="fileModel">&lt;/input-file&gt; 
+		//recid任意給一個值，必須唯一
+
+		var app=angular.module('myapp', ['simpleUploadFile']); //載入simpleUploadFile
+		app.controller('test', ['$scope', function($scope){
+			$scope.fileModel={}; //post this fileModel, you will get it on server 
+			
+		}]);
+	</pre>
+ 	<input-file recid="2" model="fileModel"></input-file>
+ <pre>{{fileModel|json}}</pre>
+ </div>
+	<script>
+	var app=angular.module('myapp', ['simpleUploadFile']);//載入simpleUploadFile
+	app.controller('test', ['$scope', function($scope){
+		$scope.fileModel={};//post this fileModel, you will get it on server 
+		
+	}]);
+	
+	</script>
+</body>
+</html>
